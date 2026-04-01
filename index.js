@@ -7,6 +7,7 @@ import passport from "passport";
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 
 const app=express()
+const PORT = process.env.PORT || 8000;
 app.set("view engine","ejs")
 app.set("views","./views")
 app.use(express.urlencoded({ extended: true }));
@@ -76,7 +77,7 @@ done(null, user);
   
 try {
   await connectDB();
-  app.listen(8000,()=>console.log("server started 8000"))
+  app.listen(PORT,()=>console.log(`server started ${PORT}`))
 } catch (error) {
   console.error("MongoDB connection error:", error.message);
   process.exit(1);
