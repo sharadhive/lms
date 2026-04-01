@@ -1,0 +1,50 @@
+.custom-navbar{
+background:black;
+height: 90px;
+border-bottom:2px solid #ff9800;
+padding:1px 0;
+box-shadow:0 2px 8px rgba(0,0,0,0.4);
+z-index:1000;
+}
+
+.logo{
+color:#ff9800 !important;
+font-size:1.6rem;
+font-weight:bold;
+}
+
+.nav-link{
+color:white !important;
+margin-left:15px;
+}
+
+.nav-link:hover{
+color:#ff9800 !important;
+}
+.navbar-toggler{
+border:1px solid #ff9800;
+}
+
+.active-link{
+color:#ff9800 !important;
+font-weight:600;
+border-bottom:2px solid #ff9800;
+padding-bottom:4px;
+}
+
+/* mobile menu background */
+
+@media(max-width:991px){
+
+.navbar-collapse{
+background:#222;
+padding:15px;
+border-left:2px solid #ff9800;
+margin-top:10px;
+}
+
+.nav-link{
+margin:10px 0;
+}
+
+}

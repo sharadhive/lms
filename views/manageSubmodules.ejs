@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Manage Submodules</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="/manage-submodules.css">
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+
+<div class="navbar-container">
+
+<div class="logo">
+<a href="/">LMS Admin</a>
+</div>
+
+<div class="hamburger" id="hamburger">
+<span></span>
+<span></span>
+<span></span>
+</div>
+
+<ul class="nav-links" id="navLinks">
+<li><a href="/admin">Dashboard</a></li>
+<li><a href="/course">Add Course</a></li>
+<li><a href="/manage-courses">Manage Courses</a></li>
+<li><a href="/logout">Logout</a></li>
+</ul>
+
+</div>
+
+</nav>
+
+<section class="register-page">
+
+<div class="form-container">
+
+<h2>Manage Submodules</h2>
+
+<div class="dashboard-cards">
+
+<% submodules.forEach(submodule => { %>
+
+<div class="dashboard-card">
+
+<h3><%= submodule.name %></h3>
+
+<p>
+<strong>Notes:</strong>
+<a href="/upload/<%= submodule.notes %>" target="_blank">View Notes</a>
+</p>
+
+<p>
+<strong>Video:</strong>
+
+<% if (submodule.video) { %>
+<a href="/upload/<%= submodule.video %>" target="_blank">Watch Video</a>
+<% } else { %>
+<span class="no-video">No video added</span>
+<% } %>
+
+</p>
+
+<div class="card-actions">
+
+<a href="/edit-submodule/<%= submodule._id %>" class="btn-small">Edit</a>
+
+<a href="/delete-submodule/<%= submodule._id %>" class="btn-small btn-danger">Delete</a>
+
+</div>
+
+</div>
+
+<% }) %>
+
+</div>
+
+</div>
+
+</section>
+
+<script>
+
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("navLinks");
+
+hamburger.addEventListener("click", () => {
+navLinks.classList.toggle("active");
+});
+
+</script>
+
+</body>
+</html>

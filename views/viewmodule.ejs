@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modules</title>
+  <link rel="stylesheet" href="/view-modules.css">
+  <link rel="stylesheet" href="/footer.css">
+</head>
+
+<body>
+  <%- include("nav") %>
+
+<section class="view-courses">
+  <div class="container">
+    <h2 class="section-title">Modules</h2>
+
+    <% if (modules.length > 0) { %>
+
+    <div class="module-grid">
+
+      <% modules.forEach((m, index)=> { %>
+
+      <div class="module-wrapper">
+
+        <div class="module-card" onclick="toggleSubmodules(<%= index %>)">
+          <div class="module-header">
+            <h3><%= m.name %></h3>
+            <p><strong>Duration:</strong> <%= m.duration %></p>
+          </div>
+        </div>
+
+        <div class="submodule-list" id="submodules-<%= index %>">
+
+          <% let moduleSubs = submodules.filter(e => e.mid == m.mid); %>
+
+          <% if (moduleSubs.length > 0 && username) { %>
+
+          <table class="submodule-table">
+
+            <thead>
+              <tr>
+                <th>Submodule Name</th>
+                <th>Notes</th>
+                <th>Video</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+              <% moduleSubs.forEach((s)=> { %>
+
+              <tr>
+
+                <td><%= s.name %></td>
+
+                <td>
+                  <% if(u && u.length > 0){ %>
+
+                    <% if(s.notes){ %>
+                      <a href="/upload/<%= s.notes %>" target="_blank">Read Notes</a>
+                    <% } else { %>
+                      N/A
+                    <% } %>
+
+                  <% } else { %>
+                    <span>You have not enrolled in this course yet.</span>
+                  <% } %>
+                </td>
+
+                <td>
+                  <% if(u && u.length > 0){ %>
+
+                    <% if(s.video){ %>
+                      <video width="100%" height="200" controls>
+                        <source src="/upload/<%= s.video %>" type="video/mp4">
+                        Your browser does not support the video tag.
+                      </video>
+                    <% } else { %>
+                      N/A
+                    <% } %>
+
+                  <% } else { %>
+                    <span>You have not enrolled in this course yet.</span>
+                  <% } %>
+                </td>
+
+                <td><%= s.status %></td>
+
+              </tr>
+
+              <% }) %>
+
+            </tbody>
+
+          </table>
+
+          <% if(moduleSubs.length > 0){ %>
+          <div class="attempt-quiz-btn">
+<a href="/viewquiz/<%= m.mid %>" class="btn">
+Attempt Quiz
+</a>
+</div>
+          <% } %>
+
+          <% } else { %>
+
+          <p class="no-submodules">
+            You are not logged in or there are no submodules available.
+          </p>
+
+          <% } %>
+
+        </div>
+
+      </div>
+
+      <% }) %>
+
+    </div>
+
+    <% } else { %>
+
+    <div class="empty-message">
+      <p>No modules found for this course.</p>
+      <img src="/assets/empty.svg" alt="No Modules" style="max-width: 300px; margin: 30px auto;" />
+    </div>
+
+    <% } %>
+
+    <div class="center-btn">
+      <a href="/viewcourse" class="btn-outline">⬅ Back to Courses</a>
+    </div>
+
+  </div>
+</section>
+
+<%- include("footer") %>
+
+<script>
+function toggleSubmodules(index) {
+  const submoduleEl = document.getElementById(`submodules-${index}`);
+  submoduleEl.classList.toggle("active");
+}
+</script>
+
+</body>
+</html>

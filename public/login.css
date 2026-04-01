@@ -1,0 +1,125 @@
+/* PAGE LAYOUT */
+
+.login-page{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#111;
+padding:40px 20px;
+}
+
+/* FORM CARD */
+
+.form-container{
+background:#1b1b1b;
+padding:40px;
+border-radius:10px;
+width:100%;
+max-width:380px;
+border:1px solid #333;
+box-shadow:0 10px 25px rgba(0,0,0,0.5);
+
+/* animation */
+opacity:0;
+transform:translateY(40px);
+animation:loginFade 0.8s ease forwards;
+}
+
+/* TITLE */
+
+.form-title{
+text-align:center;
+color:#ff9800;
+margin-bottom:25px;
+font-style:italic;
+}
+
+/* INPUT GROUP */
+
+.form-group{
+margin-bottom:18px;
+display:flex;
+flex-direction:column;
+}
+
+.form-group label{
+margin-bottom:5px;
+color:#bbb;
+font-size:14px;
+}
+
+.form-group input{
+width:100%;
+padding:10px;
+border-radius:6px;
+border:1px solid #333;
+background:#222;
+color:white;
+transition:0.2s;
+}
+
+/* INPUT FOCUS */
+
+.form-group input:focus{
+outline:none;
+border-color:#ff9800;
+box-shadow:0 0 5px rgba(255,152,0,0.4);
+}
+
+/* LOGIN BUTTON */
+
+.login-btn{
+width:100%;
+padding:12px;
+background:#ff9800;
+border:none;
+border-radius:6px;
+color:white;
+font-weight:600;
+cursor:pointer;
+transition:0.3s;
+}
+
+.login-btn:hover{
+background:#e68900;
+}
+
+/* REGISTER LINK */
+
+.account-link{
+text-align:center;
+margin-top:15px;
+color:#bbb;
+}
+
+.account-link a{
+color:#ff9800;
+text-decoration:none;
+}
+
+.account-link a:hover{
+text-decoration:underline;
+}
+
+/* MOBILE */
+
+@media(max-width:480px){
+.form-container{
+padding:30px 20px;
+}
+}
+
+@keyframes loginFade{
+
+from{
+opacity:0;
+transform:translateY(40px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}

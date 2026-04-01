@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Student Dashboard</title>
+  <link rel="stylesheet" href="/student-dashboard.css">
+</head>
+
+<body>
+
+  <%- include("nav") %>
+
+
+    <!-- Hero Section -->
+    <div class="hero">
+
+      <% if(notEnrolled){ %>
+
+        <h1>Welcome, <%= name %>
+        </h1>
+        <p>You are not enrolled in any course yet.</p>
+
+        <% } else { %>
+
+          <h1>Welcome, <%= e.name %>
+          </h1>
+          <p>Email: <%= e.email %>
+          </p>
+
+          <% } %>
+
+    </div>
+
+    <!--not enrolled-->
+    <% if(notEnrolled){ %>
+
+      <div class="not-enrolled-box">
+
+        <h2>No Course Found</h2>
+
+        <p>Please register for a course to start learning.</p>
+
+        <a href="/viewcourse" class="register-btn">
+          Register for Course
+        </a>
+
+      </div>
+
+      <% } %>
+
+
+        <% if(notEnrolled || !c || !m || m.length===0) { %>
+
+          <section class="view-courses">
+            <div class="container">
+
+              <h2 class="section-title">Your Dashboard</h2>
+
+              <div class="empty-dashboard">
+
+                <h3>You are not enrolled in any course</h3>
+
+                <p>
+                  Start learning today by enrolling in one of our available courses.
+                </p>
+
+                <a href="/viewcourse" class="btn btn-primary">
+                  Enroll in a Course
+                </a>
+
+              </div>
+
+            </div>
+          </section>
+
+          <% } else { %>
+
+            <!-- Course and Modules -->
+            <section class="view-courses">
+              <div class="container">
+
+                <h2 class="section-title">Course: <%= c.name %>
+                </h2>
+
+                <div class="dashboard-cards">
+
+                  <% m.forEach(module=> {
+                    const progress = d.find(x => x.mid == module.mid);
+                    %>
+
+                    <div class="dashboard-card">
+
+                      <h3>
+                        <%= module.name %>
+                      </h3>
+
+                      <p class="score">
+                        Score:
+                        <% if (progress && progress.marks !=null) { %>
+                          <%= (progress.marks*100)/10 %>%
+                            <% } else { %>
+                              Not Available
+                              <% } %>
+                      </p>
+
+                      <p class="attempt">
+                        Attempt:
+                        <%= progress && progress.attempt ? progress.attempt : 0 %>
+                      </p>
+
+                      <% if (!progress || progress.attempt !=="third" ) { %>
+                        <!-- I CHANGED HERE LINK IS NOT GIVEN -->
+                        <a href="/viewquiz/<%= module.mid %>">
+                          <button class="btn btn-primary">Attempt Quiz</button>
+                        </a>
+
+                        <% } else { %>
+                          <p class="no-attempt">No attempt left</p>
+                          <% } %>
+
+                            <% if (progress && progress.marks>= 6) { %>
+                              <a href="/certificate">
+                                <button class="btn btn-secondary">
+                                  Download Certificate
+                                </button>
+                              </a>
+                              <% } %>
+
+                    </div>
+
+                    <% }) %>
+
+                </div>
+
+              </div>
+            </section>
+
+            <% } %>
+
+</body>
+
+<script>
+  function gajanan() {
+    console.log("i hiit");
+  }
+
+</script>
+
+</html>

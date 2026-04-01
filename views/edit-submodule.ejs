@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Edit Submodule</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/edit-submodule.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+
+<div class="navbar-container">
+
+<div class="logo">
+<a href="/">LMS Admin</a>
+</div>
+
+<div class="hamburger" id="hamburger">
+<span></span>
+<span></span>
+<span></span>
+</div>
+
+<ul class="nav-links" id="navLinks">
+<li><a href="/admin">Dashboard</a></li>
+<li><a href="/course">Add Course</a></li>
+<li><a href="/manage-courses">Manage Courses</a></li>
+<li><a href="/logout">Logout</a></li>
+</ul>
+
+</div>
+
+</nav>
+
+<section class="register-page">
+
+<div class="form-container">
+
+<h2>Edit Submodule</h2>
+
+<form action="/edit-submodule/<%= submodule._id %>" method="POST" enctype="multipart/form-data">
+
+<div class="form-group">
+<label>Submodule Name</label>
+<input type="text" name="name" value="<%= submodule.name %>" required>
+</div>
+
+<div class="form-group">
+<label>Update Notes</label>
+<input type="file" name="notes">
+</div>
+
+<div class="form-group">
+<label>Update Video</label>
+<input type="file" name="video">
+</div>
+
+<div class="current-files">
+
+<p>
+<strong>Current Notes:</strong>
+<a href="/upload/<%= submodule.notes %>" target="_blank">View Notes</a>
+</p>
+
+<p>
+<strong>Current Video:</strong>
+<a href="/upload/<%= submodule.video %>" target="_blank">Watch Video</a>
+</p>
+
+</div>
+
+<button type="submit" class="btn">Update Submodule</button>
+
+</form>
+
+</div>
+
+</section>
+
+<script>
+
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("navLinks");
+
+hamburger.addEventListener("click", () => {
+navLinks.classList.toggle("active");
+});
+
+</script>
+
+</body>
+</html>

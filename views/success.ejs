@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Enrollment Successful</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <style>
+    /* ================= BODY & CONTAINER ================= */
+    body {
+      background: #111;
+      font-family: Arial, Helvetica, sans-serif;
+      color: white;
+    }
+
+    .enrollment-success-page {
+      padding: 80px 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .enrollment-success-page .container {
+      background: #1b1b1b;
+      padding: 40px;
+      border-radius: 10px;
+      width: 500px;
+      border: 1px solid #333;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    }
+
+    /* ================= HEADINGS ================= */
+    .section-title {
+      text-align: center;
+      color: #ff9800;
+      margin-bottom: 25px;
+    }
+
+    /* ================= TEXT ================= */
+    .welcome-message {
+      color: #ddd;
+      font-size: 16px;
+      text-align: center;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    /* ================= BUTTON ================= */
+    .btn-outline {
+      background-color: transparent;
+      color: #ff9800;
+      border: 2px solid #ff9800;
+      padding: 12px 20px;
+      border-radius: 6px;
+      font-size: 15px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn-outline:hover {
+      background-color: #ff9800;
+      color: white;
+    }
+
+    /* ================= CENTER BUTTON ================= */
+    .center-btn {
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+  <link rel="stylesheet" href="/footer.css" />
+</head>
+
+<body>
+  <%- include("nav") %>
+
+    <section class="enrollment-success-page">
+      <div class="container">
+        <h2 class="section-title">Enrollment Successful!</h2>
+
+        <p class="welcome-message">
+          Congratulation, <strong>
+            <%= username %>
+          </strong>! Your enrollment is successful.
+        </p>
+
+
+
+        <div class="center-btn" style="margin-top: 40px;">
+          <a href="/viewcourse" class="btn-outline">⬅ Back to Courses</a>
+        </div>
+      </div>
+    </section>
+
+    <%- include("footer") %>
+</body>
+
+</html>

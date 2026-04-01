@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- <link rel="stylesheet" href="/styles.css" /> -->
+  <link rel="stylesheet" href="/enrollment.css" />
+  <link rel="stylesheet" href="/footer.css" />
+</head>
+
+<body>
+  <%- include("nav")%>
+    <section class="enrollment-page">
+      <div class="container">
+        <h2 class="section-title">Enroll in Course</h2>
+
+        <div class="enrollment-layout">
+          <!-- Left: Course Info -->
+          <div class="course-summary">
+            <h3>Course Title: <%=course.name%>
+            </h3>
+            <p><strong>Fees:</strong>₹ <%=course.fees%>
+            </p>
+            <p><strong>Duration:</strong>
+              <%=course.duration%>
+            </p>
+            <p><strong>Description:</strong> Learn front-end and back-end web development using modern technologies like
+              HTML, CSS, JavaScript, Node.js, Express, MongoDB, and more.</p>
+          </div>
+
+          <!-- Right: Enrollment Form -->
+          <div class="enrollment-form-container">
+            <form action="/addenrollment/<%=course.cid%>" method="post" class="enrollment-form">
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" value="<%=username%>" required readonly />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required />
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required />
+              </div>
+
+              <div class="form-group">
+                <label for="mode">Enrollment Mode</label>
+                <select id="mode" name="mode">
+                  <option value="online">Online</option>
+                  <option value="offline">Offline</option>
+                </select>
+              </div>
+
+              <button type="submit"
+                style="padding:12px; background-color:#ff9800; color:white; border:none; border-radius:6px; font-size:15px; cursor:pointer; width:100%; transition:0.3s;"
+                onmouseover="this.style.backgroundColor='#e68900';" onmouseout="this.style.backgroundColor='#ff9800';">
+                Submit Enrollment
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div class="center-btn" style="margin-top: 40px;">
+          <a href="/viewcourse" class="btn-outline">⬅ Back to Courses</a>
+        </div>
+      </div>
+    </section>
+    <%- include("footer")%>
+
+</body>
+
+</html>

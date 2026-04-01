@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Attempt Quiz</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/footer.css">
+<style>
+
+/* PAGE */
+
+body{
+  background:#111;
+  margin:0;
+  font-family:Arial, Helvetica, sans-serif;
+  color:white;
+}
+
+.quiz-section{
+  padding:40px 20px;
+}
+
+/* CONTAINER */
+
+.quiz-container{
+  max-width:800px;
+  margin:auto;
+  background:#1b1b1b;
+  padding:35px;
+  border-radius:10px;
+  border:1px solid #333;
+  box-shadow:0 10px 25px rgba(0,0,0,0.5);
+  color:white; /* important fix */
+}
+
+.quiz-title{
+  text-align:center;
+  color:#ff9800;
+  margin-bottom:30px;
+}
+
+/* QUESTION */
+
+.quiz-question{
+  margin-bottom:30px;
+  padding-bottom:20px;
+  border-bottom:1px solid #333;
+}
+
+.quiz-question p{
+  font-size:16px;
+  margin-bottom:15px;
+  color:#fff;  /* fix */
+}
+
+/* OPTIONS */
+
+.quiz-options label{
+  display:block;
+  background:#222;
+  padding:10px 12px;
+  border-radius:6px;
+  margin-bottom:10px;
+  cursor:pointer;
+  transition:.2s;
+  color:#ddd;  /* fix */
+}
+
+.quiz-options label:hover{
+  background:#2b2b2b;
+}
+
+.quiz-options input{
+  margin-right:10px;
+}
+
+/* BUTTON */
+
+.btn-submit{
+  display:block;
+  margin:25px auto 0;
+  background:#ff9800;
+  color:white;
+  border:none;
+  padding:12px 25px;
+  border-radius:6px;
+  cursor:pointer;
+  font-size:15px;
+}
+
+.btn-submit:hover{
+  background:#e68900;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+.quiz-container{
+  padding:25px;
+}
+
+.quiz-question p{
+  font-size:15px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<%- include('nav') %>
+
+<section class="quiz-section">
+
+<div class="quiz-container">
+
+<h2 class="quiz-title">Module Quiz</h2>
+
+<form action="/submitanswer/<%=mid%>" method="POST">
+
+<% quiz.forEach((q, index) => { %>
+
+<div class="quiz-question">
+
+<p><strong>Q<%= index + 1 %>:</strong> <%= q.name %></p>
+
+<div class="quiz-options">
+
+<% q.options.forEach((opt) => { %>
+
+<label>
+<input type="radio" name="answers[<%=q._id%>]" value="<%= opt %>" required>
+<%= opt %>
+</label>
+
+<% }) %>
+
+</div>
+
+</div>
+
+<% }) %>
+
+<button type="submit" class="btn-submit">Submit Quiz</button>
+
+</form>
+
+</div>
+
+</section>
+
+<%- include('footer') %>
+
+</body>
+</html>

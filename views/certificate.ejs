@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Certificate of Completion</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #e8e8e8;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .certificate {
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      flex-direction: column;
+    }
+
+    .certificate-border {
+      background: 
+        radial-gradient(circle at center, rgba(255,255,255,0.9) 0%, rgba(240,240,240,0.95) 100%),
+        url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+      background-blend-mode: overlay;
+      border: 12px solid #1d3557;
+      padding: 40px 60px;
+      width: 100%;
+      max-width: 950px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+      position: relative;
+      overflow: hidden;
+      background-size: cover;
+      margin-bottom: 30px;
+    }
+
+    .certificate-content {
+      text-align: center;
+      color: #1d3557;
+      position: relative;
+      z-index: 2;
+    }
+
+    .brand-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: bold;
+      color: #1d3557;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    .logo img {
+      width: 80px;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      font-size: 34px;
+      margin-bottom: 10px;
+      color: #1d3557;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      color: #333;
+    }
+
+    .student-name {
+      font-size: 28px;
+      margin: 12px 0;
+      font-weight: bold;
+      color: #000;
+    }
+
+    .description {
+      font-size: 18px;
+      margin-bottom: 12px;
+      color: #444;
+    }
+
+    .module-name {
+      font-size: 22px;
+      color: #457b9d;
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+
+    .marks {
+      font-size: 18px;
+      margin-bottom: 30px;
+      color: #2a9d8f;
+    }
+
+    .issue-date {
+      font-size: 16px;
+      color: #666;
+    }
+
+    .authorized {
+      margin-top: 50px;
+      text-align: right;
+    }
+
+    .authority {
+      font-size: 16px;
+      color: #777;
+      margin-bottom: 4px;
+    }
+
+    .edutrack {
+      font-size: 18px;
+      font-weight: bold;
+      color: #1d3557;
+    }
+
+    /* Watermark Text */
+    .certificate-border::before {
+      content: "EDUTRACK";
+      position: absolute;
+      font-size: 100px;
+      color: rgba(0, 0, 0, 0.025);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-25deg);
+      white-space: nowrap;
+      z-index: 1;
+      pointer-events: none;
+      font-family: 'Playfair Display', serif;
+      letter-spacing: 15px;
+    }
+
+    /* Download Button Styling */
+    #download-btn {
+      background-color: #1d3557;
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-family: 'Roboto', sans-serif;
+      box-shadow: 0 4px 8px rgba(29, 53, 87, 0.3);
+    }
+    #download-btn:hover {
+      background-color: #457b9d;
+    }
+  </style>
+</head>
+<body>
+  <div class="certificate">
+    <div class="certificate-border" id="certificate">
+      <div class="certificate-content">
+
+        <!-- Brand Name -->
+        <div class="brand-name">EDUTRACK</div>
+
+        <!-- Logo -->
+        <div class="logo" aria-label="Edutrack Logo" role="img">
+            <svg width="80" height="80" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" >
+              <path d="M32 2L2 16L32 30L62 16L32 2Z" fill="#1d3557"/>
+              <path d="M6 20V38L32 52L58 38V20L32 32L6 20Z" fill="#457b9d"/>
+              <rect x="28" y="32" width="8" height="20" fill="#1d3557"/>
+            </svg>
+          </div>
+          
+
+        <!-- Title -->
+        <h1>Certificate of Completion</h1>
+        <p class="subtitle">This is to certify that</p>
+
+        <!-- Student Name -->
+        <h2 class="student-name"><%=d.name%></h2>
+
+        <p class="description">
+          has successfully completed the module
+        </p>
+
+        <!-- Module Name -->
+        <h3 class="module-name">"<%=m.name%>"</h3>
+
+        <!-- Marks -->
+        <p class="marks">With a score of <strong><%=(d.marks*100)/10%>%</strong></p>
+
+        <!-- Issue Date -->
+        <p class="issue-date">
+            Issued on: <%= new Date().getDate() %>/<%= new Date().getMonth() + 1 %>/<%= new Date().getFullYear() %>
+          </p>
+          
+
+        <!-- Authorized by -->
+        <div class="authorized">
+          <p class="authority">Authorized by</p>
+          <p class="edutrack">Edutrack</p>
+        </div>
+
+      </div>
+    </div>
+
+    <button id="download-btn">Download PDF</button>
+  </div>
+
+  <!-- Libraries for PDF generation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script>
+    const { jsPDF } = window.jspdf;
+
+    document.getElementById('download-btn').addEventListener('click', () => {
+      const certificate = document.getElementById('certificate');
+
+      html2canvas(certificate, { scale: 2 }).then(canvas => {
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF({
+          orientation: 'landscape',
+          unit: 'pt',
+          format: [canvas.width, canvas.height]
+        });
+
+        pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
+        pdf.save('certificate.pdf');
+      });
+    });
+  </script>
+</body>
+</html>

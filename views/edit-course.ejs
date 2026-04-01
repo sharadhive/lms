@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>Edit Course</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body{
+background:#111;
+font-family:Arial, Helvetica, sans-serif;
+margin:0;
+color:white;
+}
+
+/* NAVBAR */
+
+.navbar{
+background:#1b1b1b;
+border-bottom:1px solid #333;
+}
+
+.navbar-container{
+max-width:1200px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 20px;
+}
+
+.logo a{
+color:#ff9800;
+font-size:20px;
+font-weight:bold;
+text-decoration:none;
+}
+
+.nav-links{
+list-style:none;
+display:flex;
+gap:25px;
+margin:0;
+padding:0;
+}
+
+.nav-links a{
+text-decoration:none;
+color:#ccc;
+font-size:14px;
+}
+
+.nav-links a:hover{
+color:#ff9800;
+}
+
+/* PAGE */
+
+.edit-page{
+min-height:80vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:40px 20px;
+}
+
+/* FORM */
+
+.form-container{
+background:#1b1b1b;
+padding:35px;
+border-radius:12px;
+width:100%;
+max-width:450px;
+border:1px solid #333;
+box-shadow:0 10px 25px rgba(0,0,0,0.6);
+}
+
+.form-container h2{
+text-align:center;
+color:#ff9800;
+margin-bottom:25px;
+}
+
+.form-group{
+display:flex;
+flex-direction:column;
+margin-bottom:18px;
+}
+
+.form-group label{
+color:#bbb;
+margin-bottom:6px;
+font-size:14px;
+}
+
+.form-group input{
+padding:10px;
+border-radius:6px;
+border:1px solid #333;
+background:#222;
+color:white;
+}
+
+.form-group input:focus{
+outline:none;
+border-color:#ff9800;
+}
+
+/* IMAGE */
+
+.current-image{
+margin-top:15px;
+background:#222;
+padding:10px;
+border-radius:6px;
+border:1px solid #333;
+}
+
+.current-image img{
+width:100%;
+border-radius:6px;
+}
+
+/* BUTTON */
+
+.btn{
+width:100%;
+padding:12px;
+background:#ff9800;
+border:none;
+border-radius:6px;
+color:white;
+font-weight:600;
+cursor:pointer;
+margin-top:10px;
+}
+
+.btn:hover{
+background:#e68900;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+<div class="navbar-container">
+
+<div class="logo">
+<a href="/">LMS Admin</a>
+</div>
+
+<ul class="nav-links">
+<li><a href="/admin">Dashboard</a></li>
+<li><a href="/course">Add Course</a></li>
+<li><a href="/manage-courses">Manage Courses</a></li>
+<li><a href="/logout">Logout</a></li>
+</ul>
+
+</div>
+</nav>
+
+<!-- EDIT FORM -->
+
+<section class="edit-page">
+
+<div class="form-container">
+
+<h2>Edit Course</h2>
+
+<form action="/edit-course/<%= course._id %>" method="POST">
+
+<div class="form-group">
+<label>Course Name</label>
+<input 
+type="text" 
+name="name" 
+value="<%= course.name %>" 
+required
+>
+</div>
+
+<div class="form-group">
+<label>Duration</label>
+<input 
+type="text" 
+name="duration" 
+value="<%= course.duration %>" 
+required
+>
+</div>
+
+<div class="form-group">
+<label>Fees</label>
+<input 
+type="number" 
+name="fees" 
+value="<%= course.fees %>" 
+required
+>
+</div>
+
+<div class="current-image">
+
+<p><strong>Current Image:</strong></p>
+
+<img src="/upload/<%= course.image %>" alt="Course Image">
+
+</div>
+
+<button type="submit" class="btn">Update Course</button>
+
+</form>
+
+</div>
+
+</section>
+
+</body>
+
+</html>

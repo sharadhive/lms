@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="/edit-quiz.css">
+
+
+<%- include('nav') %>
+
+    <section class="register-page">
+
+        <div class="form-container">
+
+            <h2>Edit Quiz Question</h2>
+
+            <form class="register-form" action="/edit-quiz/<%= quiz._id %>" method="POST">
+
+                <div class="form-group">
+                    <label>Quiz Question</label>
+                    <input type="text" name="name" value="<%= quiz.name %>" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Options</label>
+
+                    <% quiz.options.forEach(function(option){ %>
+                        <input type="text" name="options" value="<%= option %>" required>
+                        <% }) %>
+
+                </div>
+
+                <div class="form-group">
+                    <label>Correct Answer</label>
+                    <input type="text" name="answer" value="<%= quiz.answer %>" required>
+                </div>
+
+                <input type="hidden" name="mid" value="<%= quiz.mid %>">
+
+                <button type="submit" class="btn">Update Quiz</button>
+
+            </form>
+
+        </div>
+
+    </section>

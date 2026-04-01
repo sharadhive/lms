@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Edit Module</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/edit-module.css">
+</head>
+
+<body>
+
+<section class="edit-page">
+
+<div class="edit-container">
+
+<h2>Edit Module</h2>
+
+<form action="/edit-module/<%= module._id %>" method="POST">
+
+<label>Module Name</label>
+<input 
+type="text" 
+name="name" 
+value="<%= module.name %>" 
+required
+/>
+
+<label>Description</label>
+<textarea name="description" required><%= module.description %></textarea>
+
+<label>Duration</label>
+<input 
+type="text" 
+name="duration" 
+value="<%= module.duration %>" 
+required
+/>
+
+<button type="submit">Update Module</button>
+
+</form>
+
+</div>
+
+</section>
+
+</body>
+</html>

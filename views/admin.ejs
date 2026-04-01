@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+   <!-- Link your existing CSS -->
+  <link rel="stylesheet" href="admin.css">
+  
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo"><a href="/">LMS Admin</a></div>
+      <ul class="nav-links">
+        <li><a href="/admin">Dashboard</a></li>
+        <li><a href="/course">Add Course</a></li>
+        <li><a href="/manage-courses">Manage Courses</a></li>
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+ <!-- Admin Dashboard Section -->
+<section class="register-page">
+  <div class="form-container" style="max-width: 800px;">
+    <h2>Admin Dashboard</h2>
+
+    <div style="margin-top: 30px;">
+      <div class="dashboard-cards">
+
+        <!-- Card 1: View All Courses -->
+        <div class="dashboard-card">
+          <h3>View All Courses</h3>
+          <a href="/manage-courses" class="btn-small">Go to Courses</a>
+        </div>
+
+        <!-- Card 2: Add New Course -->
+        <div class="dashboard-card">
+          <h3>Add New Course</h3>
+          <a href="/course" class="btn-small">Create Course</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link rel="stylesheet" href="/course-view.css">
+  <link rel="stylesheet" href="/footer.css">
+
+</head>
+
+<body>
+  <!-- Navbar -->
+  <%- include("nav")%>
+    <section class="view-courses">
+      <div class="container">
+        <h2 class="section-title">Available Courses</h2>
+        <div class="course-grid">
+          <!-- Course Card -->
+          <%for(c of courses){%>
+            <div class="course-card">
+              <img src="/upload/<%=c.image%>" alt="Course Image" />
+              <div class="course-info">
+                <h3>
+                  <%=c.name%>
+                </h3>
+                <p><strong>Duration:</strong>
+                  <%=c.duration%>
+                </p>
+                <p><strong>Fees:</strong>₹ <%=c.fees%>
+                </p>
+
+                <a href="/viewmodule/<%=c.cid%>" class="btn-outline view-module-btn">View Modules</a>
+              </div>
+            </div>
+            <%}%>
+
+        </div>
+      </div>
+    </section>
+    <%- include("footer")%>
+
+
+</body>
+
+</html>

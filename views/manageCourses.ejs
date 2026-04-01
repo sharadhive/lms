@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+     <!-- Link your existing CSS -->
+    <link rel="stylesheet" href="/manage-course.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+   <nav class="navbar">
+  <div class="navbar-container">
+
+    <div class="logo">
+      <a href="/">LMS Admin</a>
+    </div>
+
+    <!-- HAMBURGER -->
+    <div class="hamburger" id="hamburger">
+      ☰
+    </div>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/admin">Dashboard</a></li>
+      <li><a href="/course">Add Course</a></li>
+      <li><a href="/manage-courses">Manage Courses</a></li>
+      <li><a href="/logout">Logout</a></li>
+    </ul>
+
+  </div>
+</nav>
+
+    <!-- Admin Dashboard Section -->
+    <section class="register-page">
+        <div class="form-container" style="max-width: 1000px;">
+            <h2 style="text-align: center;">Manage All Courses</h2>
+
+            <div class="dashboard-cards">
+                <% courses.forEach(course=> { %>
+                    <div class="dashboard-card">
+
+                        <!-- Course Image -->
+                        <img src="/upload/<%= course.image %>" alt="<%= course.title %>" class="card-image" />
+
+                        <h3>
+                            <%= course.name %>
+                        </h3>
+                        <p><strong>Description:</strong>
+                            <%= course.description %>
+                        </p>
+                        <p><strong>Duration:</strong>
+                            <%= course.duration %>
+                        </p>
+
+                        <div style="margin-top: 15px;">
+                            <a href="/edit-course/<%= course._id %>" class="btn-small">Edit</a>
+                            <a href="/delete-course/<%= course.cid %>" class="btn-small btn-danger">Remove</a>
+                            <a href="/module/<%=course.cid%>" class="btn-small btn-info">Add Module</a>
+                            <a href="/manage-modules/<%=course.cid%>" class="btn-small btn-info">view Module</a>
+                        </div>
+                    </div>
+                    <% }) %>
+            </div>
+        </div>
+    </section>
+
+<script>
+
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("nav-links");
+
+hamburger.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+});
+
+</script>
+
+</body>
+
+</html>

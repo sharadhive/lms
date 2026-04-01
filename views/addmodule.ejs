@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Module</title>
+  <link rel="stylesheet" href="/add-module.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-container">
+      <div class="logo"><a href="/">LMS Admin</a></div>
+      <ul class="nav-links">
+          <li><a href="/admin">Dashboard</a></li>
+          <li><a href="/course">Add Course</a></li>
+          <li><a href="/manage-courses">Manage Courses</a></li>
+          <li><a href="/logout">Logout</a></li>
+      </ul>
+  </div>
+</nav>
+
+<section class="register-page">
+  <div class="form-container">
+    <h2>Add New Module</h2>
+
+    <form class="register-form" action="/module/<%= cid %>" method="POST">
+
+      <div class="form-group">
+        <label for="name">Module Name</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="duration">Duration</label>
+        <input type="text" id="duration" name="duration" required>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" name="description" rows="4" required></textarea>
+      </div>
+
+      <button type="submit" class="btn">Add Module</button>
+
+    </form>
+  </div>
+</section>
+
+</body>
+</html>

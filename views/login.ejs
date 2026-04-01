@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title><%= isAdminLogin ? "Admin Login" : "Login" %> | EduTrack</title>
+
+<link rel="stylesheet" href="/login.css">
+<link rel="stylesheet" href="/footer.css">
+
+</head>
+<body>
+
+<%- include("nav") %>
+
+<section class="login-page">
+
+<div class="form-container">
+
+<h2 class="form-title"><%= isAdminLogin ? "Admin Sign In" : "Login to Your Account" %></h2>
+
+<% if(error){ %>
+<p style="margin-bottom:16px; color:#c62828; font-weight:600;"><%= error %></p>
+<% } %>
+
+<form action="<%= formAction || '/login' %>" method="POST" class="login-form">
+
+<div class="form-group">
+<label for="username">Username</label>
+<input type="text" id="username" name="username" placeholder="Enter your username" required>
+</div>
+
+<div class="form-group">
+<label for="password">Password</label>
+<input type="password" id="password" name="password" placeholder="Enter your password" required>
+</div>
+
+<button type="submit" class="login-btn"><%= isAdminLogin ? "Login as Admin" : "Login" %></button>
+
+<p class="account-link">
+<% if(isAdminLogin){ %>
+User login?
+<a href="/login">Go to standard login</a>
+<% } else { %>
+Don't have an account?
+<a href="/register">Register</a>
+<% } %>
+</p>
+
+<p class="account-link">
+<% if(isAdminLogin){ %>
+This route grants admin panel access only after a separate admin sign-in.
+<% } else { %>
+Admin access?
+<a href="/admin/login">Use secure admin login</a>
+<% } %>
+</p>
+
+</form>
+
+</div>
+
+</section>
+
+<%- include("footer") %>
+
+</body>
+</html>

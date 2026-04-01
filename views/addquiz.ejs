@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Add Quiz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/quiz.css">
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="navbar-container">
+
+      <div class="logo">
+        <a href="/">LMS Admin</a>
+      </div>
+
+      <div class="hamburger" id="hamburger">☰</div>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/admin">Dashboard</a></li>
+        <li><a href="/course">Add Course</a></li>
+        <li><a href="/manage-courses">Manage Courses</a></li>
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+
+    </div>
+  </nav>
+
+  <!-- ADD QUIZ PAGE -->
+  <section class="register-page">
+
+    <div class="form-container">
+
+      <h2>Add Quiz to Module</h2>
+
+      <form class="register-form" action="/quiz/<%= mid %>" method="POST">
+
+        <div class="form-group">
+          <label>Quiz Question</label>
+          <input type="text" name="name" placeholder="Enter quiz question" required>
+        </div>
+
+        <div class="form-group">
+          <label>Options</label>
+
+          <input type="text" name="options" placeholder="Option 1" required>
+          <input type="text" name="options" placeholder="Option 2" required>
+          <input type="text" name="options" placeholder="Option 3">
+          <input type="text" name="options" placeholder="Option 4">
+
+        </div>
+
+        <div class="form-group">
+          <label>Correct Answer</label>
+          <input type="text" name="answer" placeholder="Correct answer (must match option)" required>
+        </div>
+
+        <input type="hidden" name="mid" value="<%= mid %>">
+
+
+        <button type="submit" class="btn">Add Quiz</button>
+
+      </form>
+
+    </div>
+
+  </section>
+
+  <script>
+
+    const hamburger = document.getElementById("hamburger");
+    const navLinks = document.getElementById("navLinks");
+
+    hamburger.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
+    });
+
+  </script>
+
+</body>
+
+</html>

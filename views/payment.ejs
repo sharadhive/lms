@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Enrollment Confirmation</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="/payment.css" />
+  <link rel="stylesheet" href="/footer.css" />
+</head>
+
+<body>
+  <%- include("nav") %>
+
+    <section class="enrollment-success-page">
+      <div class="container">
+        <h2 class="section-title">Enrollment Confirmation</h2>
+
+        <% if (mode==='online' ) { %>
+          <p class="info-message">
+            Thank you for choosing <strong>Online Enrollment</strong>. Please complete your course payment by scanning
+            the QR code below.
+          </p>
+
+          <div class="qr-code-container">
+            <img src="/upload/qr.png" alt="Course Enrollment QR Code" />
+          </div>
+
+          <p class="instructions">
+            After completing the payment, click the <strong>Done</strong> button to proceed to your enrollment success
+            page.
+          </p>
+
+          <div class="btn-group">
+            <a href="/addpaymentdetail/<%=eid%>" class="btn">
+              <button type="submit"
+                style="padding:12px; background-color:#ff9800; color:white; border:none; border-radius:6px; font-size:15px; cursor:pointer; width:100%; transition:0.3s;"
+                onmouseover="this.style.backgroundColor='#e68900';" onmouseout="this.style.backgroundColor='#ff9800';">
+                Done
+              </button> </a>
+
+            <a href="/viewcourse" class="btn-outline">Cancel</a>
+          </div>
+
+          <% } else { %>
+            <p class="info-message">
+              You have selected <strong>Offline Enrollment</strong>. Please visit our center or contact us for further
+              enrollment instructions.
+            </p>
+
+            <p class="instructions">
+              Click <strong>Next</strong> to complete your enrollment process.
+            </p>
+
+            <div class="btn-group">
+              <a href="/addpaymentdetail/<%=eid%>" class="btn">
+                <button type="submit"
+                  style="padding:12px; background-color:#ff9800; color:white; border:none; border-radius:6px; font-size:15px; cursor:pointer; width:100%; transition:0.3s;"
+                  onmouseover="this.style.backgroundColor='#e68900';"
+                  onmouseout="this.style.backgroundColor='#ff9800';">
+                  Next
+                </button>
+              </a>
+              <a href="/viewcourse" class="btn-outline">Back to Courses</a>
+            </div>
+            <% } %>
+
+      </div>
+    </section>
+
+    <%- include("footer") %>
+</body>
+
+</html>

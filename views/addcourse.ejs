@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Add Course</title>
+  <link rel="stylesheet" href="/add-course.css">
+  <link rel="stylesheet" href="/footer.css">
+</head>
+
+<body>
+
+  <%- include("nav") %>
+    <!-- Add Course Page -->
+    <section class="add-course"> <!-- Reusing layout from register/login -->
+      <div class="add-course-container">
+        <h2>Add New Course</h2>
+        <form class="register-form" action="/course" method="POST" enctype="multipart/form-data">
+
+          <div class="form-group">
+            <label for="name">Course Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="duration">Duration</label>
+            <input type="text" id="duration" name="duration" required>
+          </div>
+
+          <div class="form-group">
+            <label for="fees">Fees</label>
+            <input type="number" id="fees" name="fees" required>
+          </div>
+
+          <div class="form-group">
+            <label for="image">Course Image</label>
+            <input type="file" id="image" name="image" accept="image/*" required>
+          </div>
+
+          <button type="submit" class="btn">Add Course</button>
+
+        </form>
+      </div>
+    </section>
+    <%- include("footer") %>
+</body>
+
+</html>

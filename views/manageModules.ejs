@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Manage Modules</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/manage-modules.css">
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="navbar-container">
+
+    <div class="logo">
+      <a href="/">LMS Admin</a>
+    </div>
+
+    <!-- Hamburger -->
+    <div class="hamburger" id="hamburger">
+      ☰
+    </div>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/admin">Dashboard</a></li>
+      <li><a href="/course">Add Course</a></li>
+      <li><a href="/manage-courses">Manage Courses</a></li>
+      <li><a href="/logout">Logout</a></li>
+    </ul>
+
+  </div>
+</nav>
+
+<!-- Main Container -->
+<section class="register-page">
+  <div class="form-container">
+    <h2>Manage Modules</h2>
+
+    <div class="dashboard-cards">
+      <% modules.forEach(module => { %>
+      <div class="dashboard-card">
+        <h3><%= module.name %></h3>
+        <p><strong>Description:</strong> <%= module.description %></p>
+        <p><strong>Duration:</strong> <%= module.duration %></p>
+
+        <div class="card-actions">
+          <a href="/edit-module/<%= module._id %>" class="btn-small btn-info">Edit</a>
+          <a href="/delete-module/<%= module._id %>" class="btn-small btn-danger">Delete</a>
+          <a href="/submodule/<%= module.mid %>" class="btn-small btn-secondary">Add Submodule</a>
+          <a href="/mangesubmodule/<%= module.mid %>" class="btn-small btn-secondary">View Submodules</a>
+          <a href="/quiz/<%= module.mid %>" class="btn-small btn-secondary">Add Quiz</a>
+          <a href="/manage-quiz/<%= module.mid %>" class="btn-small btn-secondary">View Quiz</a>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+
+    <div class="center-btn">
+      <!-- <a href="/course/<%= cid %>/add-module" class="btn">Add New Module</a> -->
+      <a href="/manage-courses" class="btn">Back to Courses</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-logo">LMS Admin</div>
+    <p class="footer-text">&copy; <%= new Date().getFullYear() %> LMS. All rights reserved.</p>
+
+    <ul class="footer-links">
+      <li><a href="/admin">Dashboard</a></li>
+      <li><a href="/course">Add Course</a></li>
+      <li><a href="/manage-courses">Manage Courses</a></li>
+      <li><a href="/logout">Logout</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("navLinks");
+
+hamburger.addEventListener("click", () => {
+  navLinks.classList.toggle("show");
+});
+</script>
+
+</body>
+</html>

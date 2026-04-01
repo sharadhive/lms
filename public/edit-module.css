@@ -1,0 +1,75 @@
+body{
+background:#111;
+font-family:Arial, Helvetica, sans-serif;
+margin:0;
+}
+
+/* PAGE */
+
+.edit-page{
+padding:80px 20px;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:80vh;
+}
+
+/* FORM BOX */
+
+.edit-container{
+background:#1b1b1b;
+padding:40px;
+border-radius:10px;
+width:100%;
+max-width:420px;
+border:1px solid #333;
+}
+
+.edit-container h2{
+text-align:center;
+color:#ff9800;
+margin-bottom:25px;
+}
+
+/* LABEL */
+
+.edit-container label{
+color:#bbb;
+font-size:14px;
+}
+
+/* INPUT */
+
+.edit-container input,
+.edit-container textarea{
+width:100%;
+padding:10px;
+margin-top:6px;
+margin-bottom:15px;
+border-radius:6px;
+border:1px solid #333;
+background:#222;
+color:white;
+}
+
+.edit-container textarea{
+min-height:90px;
+resize:vertical;
+}
+
+/* BUTTON */
+
+button{
+width:100%;
+padding:12px;
+background:#ff9800;
+border:none;
+border-radius:6px;
+color:white;
+cursor:pointer;
+font-size:15px;
+}
+
+button:hover{
+background:#e68900;
+}

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Manage Quiz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/manage-modules.css">
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+
+      <div class="logo">
+        <a href="/">LMS Admin</a>
+      </div>
+
+      <div class="hamburger" id="hamburger">☰</div>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/admin">Dashboard</a></li>
+        <li><a href="/course">Add Course</a></li>
+        <li><a href="/manage-courses">Manage Courses</a></li>
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+
+    </div>
+  </nav>
+
+
+  <section class="register-page">
+
+    <div class="form-container">
+
+      <h2>Manage Quiz Questions</h2>
+
+      <div class="dashboard-cards">
+
+        <% quiz.forEach(q=> { %>
+
+          <div class="dashboard-card">
+
+            <h3>
+              <%= q.name %>
+            </h3>
+
+            <p><strong>Options:</strong></p>
+
+            <ul>
+              <% q.options.forEach(option=> { %>
+
+                <li>
+                  <%= option %>
+                </li>
+
+                <% }) %>
+            </ul>
+
+            <p><strong>Correct Answer:</strong>
+              <%= q.answer %>
+            </p>
+
+            <div class="card-actions">
+              <!-- i changed -->
+              <!-- <a href="/edit-quiz/<%= q.qid %>" class="btn-small btn-info">Edit</a> -->
+
+
+
+              <a href="/edit-quiz/<%= q._id %>" class="btn-small btn-info">Edit</a>
+
+
+              <a href="/delete-quiz/<%= q._id %>" class="btn-small btn-danger"
+                onclick="return confirm('Delete this question?')">
+                Delete
+              </a>
+
+            </div>
+
+          </div>
+
+          <% }) %>
+
+      </div>
+
+      <div class="center-btn">
+
+        <a href="/quiz/<%= mid %>" class="btn">Add New Question</a>
+
+        <a href="/manage-modules/<%= mid %>" class="btn">Back</a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <footer class="footer">
+
+    <div class="container">
+
+      <div class="footer-logo">LMS Admin</div>
+
+      <p class="footer-text">
+        &copy; <%= new Date().getFullYear() %> LMS. All rights reserved.
+      </p>
+
+    </div>
+
+  </footer>
+
+
+  <script>
+
+    const hamburger = document.getElementById("hamburger");
+    const navLinks = document.getElementById("navLinks");
+
+    hamburger.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
+    });
+
+  </script>
+
+</body>
+
+</html>

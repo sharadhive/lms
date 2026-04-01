@@ -1,0 +1,168 @@
+.view-courses{
+padding:70px 20px;
+background:#111;
+}
+
+.section-title{
+text-align:center;
+color:#ff9800;
+margin-bottom:40px;
+}
+.module-card{
+  background:#1b1b1b;
+  padding:20px;
+  border-radius:10px;
+
+  border:1px solid #333;      /* visible border */
+  border-left:4px solid #ff9800;
+
+  cursor:pointer;
+  transition:all 0.3s ease;
+}
+
+/* hover animation */
+
+.module-card:hover{
+  transform:translateY(-6px) scale(1.02);
+  border-color:#ff9800;
+  box-shadow:0 10px 25px rgba(0,0,0,0.6);
+}
+
+.module-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+}
+
+.module-card p{
+color:#ddd;
+font-size:14px;
+margin-top:6px;
+}
+
+.module-card strong{
+color:#ff9800;
+}
+
+.module-card:hover{
+transform:translateY(-5px);
+}
+
+.module-card h3{
+color:#ff9800;
+}
+
+.submodule-list{
+display:none;
+margin-top:10px;
+}
+
+.submodule-list.active{
+display:block;
+}
+
+.submodule-table{
+width:100%;
+border-collapse:collapse;
+margin-top:10px;
+}
+
+.submodule-table th{
+background:#1f1f1f;
+color:#ff9800;
+padding:10px;
+}
+
+.submodule-table td{
+padding:10px;
+border-bottom:1px solid #333;
+color:#ccc;
+}
+
+video{
+width:200px;
+border-radius:6px;
+}
+
+.btn{
+background:#ff9800;
+color:white;
+padding:10px 18px;
+border-radius:6px;
+text-decoration:none;
+}
+
+.btn:hover{
+background:#e68900;
+}
+
+.center-btn{
+text-align:center;
+margin-top:40px;
+}
+
+.btn-outline{
+display:inline-block;
+padding:12px 22px;
+border:2px solid #ff9800;
+color:#ff9800;
+border-radius:8px;
+text-decoration:none;
+font-weight:500;
+transition:0.3s;
+}
+
+.btn-outline:hover{
+background:#ff9800;
+color:white;
+transform:translateY(-2px);
+box-shadow:0 6px 15px rgba(0,0,0,0.4);
+}
+
+.no-submodules{
+  color:#ffb74d;
+  background:#1a1a1a;
+  padding:12px 15px;
+  border-radius:6px;
+  border-left:4px solid #ff9800;
+  margin-top:10px;
+}
+
+/* QUIZ BUTTON AREA */
+
+.attempt-quiz-btn{
+margin-top:20px;
+text-align:center;
+}
+
+/* QUIZ BUTTON */
+
+.attempt-quiz-btn .btn{
+display:inline-block;
+background:#ff9800;
+color:#fff;
+padding:12px 22px;
+border-radius:6px;
+text-decoration:none;
+font-weight:600;
+transition:0.3s;
+}
+
+.attempt-quiz-btn .btn:hover{
+background:#e68900;
+transform:translateY(-2px);
+box-shadow:0 6px 15px rgba(0,0,0,0.4);
+}
+
+@media(max-width:768px){
+
+.submodule-table{
+display:block;
+overflow-x:auto;
+}
+
+video{
+width:160px;
+}
+
+}
