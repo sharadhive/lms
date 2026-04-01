@@ -8,6 +8,7 @@ import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 
 const app=express()
 const PORT = process.env.PORT || 8000;
+app.set("trust proxy", 1);
 app.set("view engine","ejs")
 app.set("views","./views")
 app.use(express.urlencoded({ extended: true }));
